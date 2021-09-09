@@ -42,7 +42,7 @@ def get_filters():
             print("Invalid month....PLEASE TRY AGAIN!")
         else:
             break   
-    print("You choose {}".format(month.title()) )
+    print(f"You choose {month.title()}")
             
     
     # Get user input for day of week (all, monday, tuesday, ... sunday)
@@ -55,7 +55,7 @@ def get_filters():
             print("Invalid day....PLEASE TRY AGAIN!")
         else:
             break
-    print("You choose {}".format(day.title()) )
+    print(f"You choose {day.title()}")
     
     print('-'*40)
     return city , month , day
@@ -116,17 +116,17 @@ def time_stats(df):
     months = ['january', 'february', 'march', 'april', 'may', 'june']
     index_of_most_common_month = df['month'].mode()[0]
     most_common_month = months[index_of_most_common_month - 1]
-    print('Most common month is : {} .'.format(most_common_month.upper()) )
+    print(f'Most common month is : {most_common_month.upper()} .')
 
     # Very impotant note : 'day_of_week' coloumn is the name of day
     # Display the most common day of week
     most_common_day = df['day_of_week'].mode()[0]
-    print('Most common day of week is : {} .'.format(most_common_day.upper()) )
+    print(f'Most common day of week is : {most_common_day.upper()} .')
         
 
     # TDisplay the most common start hour
     most_common_start_hour = df['hour'].mode()[0]
-    print('Most common start hour is : {} .'.format(most_common_start_hour) )
+    print(f'Most common start hour is : {most_common_start_hour} .')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -140,15 +140,15 @@ def station_stats(df):
 
     # Display most commonly used start station *From 'Start Station' coloumn*
     most_common_start_station = df['Start Station'].mode()[0]
-    print('Most common start station is : {} .'.format(most_common_start_station) )
+    print(f'Most common start station is : {most_common_start_station} .')
 
     # Display most commonly used end station *From 'End Station' coloumn*
     most_common_end_station = df['End Station'].mode()[0]
-    print('Most common end station is : {} .'.format(most_common_end_station) )
+    print(f'Most common end station is : {most_common_end_station} .')
 
     # Display most frequent combination of start station and end station trip *From 'Trip Stations' coloumn*
     most_common_trip_stations = df['Trip Stations'].mode()[0]
-    print('Most common trip stations is : {} .'.format(most_common_trip_stations) )
+    print(f'Most common trip stations is : {most_common_trip_stations} .')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -162,12 +162,12 @@ def trip_duration_stats(df):
 
     # Display total travel time *From 'Trip Duration' coloumn*
     total_travel_time = df['Trip Duration'].sum()
-    print("Total travel time = {} min".format(total_travel_time / 60.00) )
+    print(f"Total travel time = {total_travel_time / 60.00} min")
 
     # Display mean travel time *From 'Trip Duration' coloumn*
     # df.describe() ==> [0] == count , [1] == mean , [2] == std
     mean_travel_time = df['Trip Duration'].describe()[1]
-    print("Mean travel time = {} min".format(mean_travel_time / 60.00) )
+    print(f"Mean travel time = {mean_travel_time / 60.00} min")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -184,8 +184,8 @@ def user_stats(df):
     subscriber = df['User Type'].value_counts()[0]
     customer = df['User Type'].value_counts()[1]
     #dependent = df['User Type'].value_counts()[2]
-    print("Number of SUBSCRIBERS : {} ".format(subscriber))
-    print("Number of CUSTOMERS : {} ".format(customer))
+    print(f"Number of SUBSCRIBERS : {subscriber} ")
+    print(f"Number of CUSTOMERS : {customer} ")
     #print("Number of DEPENDENT : {} \n".format(dependent))
     
     
@@ -195,8 +195,8 @@ def user_stats(df):
     if 'Gender' in df:
         male   = df['Gender'].value_counts()[0]
         female = df['Gender'].value_counts()[1]
-        print("Number of MALES : {}".format(male))
-        print("Number of FEMALES : {} \n".format(female))
+        print(f"Number of MALES : {male}")
+        print(f"Number of FEMALES : {female} \n")
         
         
     # Just if city is 'Chicago' or 'New york city'
@@ -206,9 +206,9 @@ def user_stats(df):
         most_common_year_of_birth = df['Birth Year'].mode()[0]
         youngest = df['Birth Year'].describe()[7]
         oldest   = df['Birth Year'].describe()[3]
-        print("Most common year of birth : {}".format(most_common_year_of_birth))
-        print("Earliest year of birth : {}".format(oldest))
-        print("Most recent year of birth : {}".format(youngest))
+        print(f"Most common year of birth : {most_common_year_of_birth}")
+        print(f"Earliest year of birth : {oldest}")
+        print(f"Most recent year of birth : {youngest}")
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
